@@ -1,5 +1,5 @@
 
-var throttle = require('lodash.throttle');
+import { throttle } from 'lodash';
 
 const form = document.querySelector('.feedback-form');
 const email = document.querySelector('input[name="email"]');
@@ -22,12 +22,9 @@ form.addEventListener('submit', e => {
 });
 
 const load = key => {
-  try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
-  } catch (error) {
-    console.error('Get state error: ', error.message);
-  }
+
 };
 
 const storageData = load(LOCALSTORAGE_KEY);
